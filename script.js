@@ -82,7 +82,7 @@ function populateHelix() { // adds the points and strands to the helix and fills
 
 populateHelix()
 
-///////////////////////////////////////////////////////////// hover stuffLet
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////// hover stuff
 let cursorMoveAnimationShouldStop = false
 function hoverModifyChars(event) {
     const hoveredElement = event.target
@@ -107,6 +107,7 @@ function hoverModifyChars(event) {
 for (let strand of helixSVG.querySelectorAll('g')){
     for (let char of strand.children){
         char.addEventListener('mouseenter', hoverModifyChars)
+        char.addEventListener('touchenter', hoverModifyChars)
         char.addEventListener('animationend', (event) => {
             event.target.classList.remove('char-was-hovered')
         })
@@ -134,7 +135,8 @@ function getCursorImpactDetails(event) {  //estalishes mouse position to use in 
     currentCursorPosition = [event.clientX - boundingClient.left, event.clientY - boundingClient.top]
 }
 helixSVG.addEventListener('mousemove', getCursorImpactDetails)
-/////////////////////////////////////////////////////////////
+helixSVG.addEventListener('touchmove', getCursorImpactDetails)
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // TODO we can do optimisation later. currently it adds 0.7 GHz to cpu
 // the optimisations would be: have a dict for every position and detail so that you dont have to caluclate it all.
