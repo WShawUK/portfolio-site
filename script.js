@@ -85,6 +85,7 @@ populateHelix()
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////// hover stuff
 let cursorMoveAnimationShouldStop = false
 function hoverModifyChars(event) {
+    event.preventDefault()
     const hoveredElement = event.target
     if (hoveredElement.classList.contains('char-was-hovered')){
         return
