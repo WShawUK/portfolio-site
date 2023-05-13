@@ -361,8 +361,6 @@ footer #phone-div {
     border: 1px solid var(--color-misc-1);
     align-self: center;
     flex-shrink: 0;
-
-    touch-action: none;
 }
 
 
