@@ -85,11 +85,12 @@ populateHelix()
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////// hover stuff
 let cursorMoveAnimationShouldStop = false
 function hoverModifyChars(event) {
-    event.preventDefault()
     const hoveredElement = event.target
+    
     if (hoveredElement.classList.contains('char-was-hovered')){
         return
     }
+    
     cursorMoveAnimationShouldStop = true
     const hslH = Math.floor(Math.random() * 361)
     const hslS = Math.floor(Math.random() * 51) + 50
@@ -105,10 +106,17 @@ function hoverModifyChars(event) {
 
     hoveredElement.classList.add('char-was-hovered')
 }
+
+for (let svg of document.getElementById('skills-icon-div').children){
+    svg.addEventListener('touchmove', (e) => {
+        
+        console.log('moved', e.target)
+    })
+}
+
 for (let strand of helixSVG.querySelectorAll('g')){
     for (let char of strand.children){
         char.addEventListener('mouseenter', hoverModifyChars)
-        char.addEventListener('touchmove', hoverModifyChars)
         char.addEventListener('animationend', (event) => {
             event.target.classList.remove('char-was-hovered')
         })
@@ -141,7 +149,6 @@ function getCursorImpactDetailsTouch(event) {  // same but for touch
         event.preventDefault()
         event.stopPropagation()
     }
-
     else {
         return
     }
@@ -150,7 +157,12 @@ function getCursorImpactDetailsTouch(event) {  // same but for touch
 
     previousCursorPosition = currentCursorPosition.slice()
     currentCursorPosition = [thisTouch.clientX - boundingClient.left, thisTouch.clientY - boundingClient.top]
-    console.log(currentCursorPosition, previousCursorPosition)
+    const elementHoveredOver = document.elementFromPoint(thisTouch.clientX, thisTouch.clientY)
+    console.log(elementHoveredOver.nodeName)
+    if (elementHoveredOver.nodeName === 'text'){
+        hoverModifyChars({target : elementHoveredOver})
+    }
+    
 }
 
 helixSVG.addEventListener('mousemove', getCursorImpactDetails)
