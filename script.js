@@ -108,7 +108,7 @@ function hoverModifyChars(event) {
 for (let strand of helixSVG.querySelectorAll('g')){
     for (let char of strand.children){
         char.addEventListener('mouseenter', hoverModifyChars)
-        char.addEventListener('touchenter', hoverModifyChars)
+        char.addEventListener('touchmove', hoverModifyChars)
         char.addEventListener('animationend', (event) => {
             event.target.classList.remove('char-was-hovered')
         })
@@ -135,8 +135,26 @@ function getCursorImpactDetails(event) {  //estalishes mouse position to use in 
     previousCursorPosition = currentCursorPosition.slice()
     currentCursorPosition = [event.clientX - boundingClient.left, event.clientY - boundingClient.top]
 }
+
+function getCursorImpactDetailsTouch(event) {  // same but for touch
+    if (event.touches.length == 1){
+        event.preventDefault()
+        event.stopPropagation()
+    }
+
+    else {
+        return
+    }
+
+    const thisTouch = event.touches[0]
+
+    previousCursorPosition = currentCursorPosition.slice()
+    currentCursorPosition = [thisTouch.clientX - boundingClient.left, thisTouch.clientY - boundingClient.top]
+    console.log(currentCursorPosition, previousCursorPosition)
+}
+
 helixSVG.addEventListener('mousemove', getCursorImpactDetails)
-helixSVG.addEventListener('touchmove', getCursorImpactDetails)
+helixSVG.addEventListener('touchmove', getCursorImpactDetailsTouch)
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // TODO we can do optimisation later. currently it adds 0.7 GHz to cpu
