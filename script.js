@@ -167,6 +167,11 @@ function getCursorImpactDetailsTouch(event) {  // same but for touch
 
 helixSVG.addEventListener('mousemove', getCursorImpactDetails)
 helixSVG.addEventListener('touchmove', getCursorImpactDetailsTouch)
+helixSVG.addEventListener('touchstart', (e) => {
+    const thisTouch = e.touches[0]
+    currentCursorPosition = [thisTouch.clientX - boundingClient.left, thisTouch.clientY - boundingClient.top]
+    previousCursorPosition = [thisTouch.clientX - boundingClient.left, thisTouch.clientY - boundingClient.top]
+})
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // TODO we can do optimisation later. currently it adds 0.7 GHz to cpu
