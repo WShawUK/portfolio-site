@@ -318,10 +318,24 @@ for (let button of allButtons){
 const observer = new IntersectionObserver((entries) => {
     for (let entry of entries){
         if (entry.isIntersecting){
-            entry.target.classList.add('is-shown')
+            console.log(entry.target.id)
+            if (entry.target.id === "skills-icon-div"){ // it has to work differently for the svg div otherwise it messes up
+                for (let svg of entry.target.children){
+                    svg.classList.add('is-shown')
+                }
+            } else {
+                entry.target.classList.add('is-shown')
+            }
+            
         }
         else {
-            entry.target.classList.remove('is-shown')
+            if (entry.target.id === "skills-icon-div"){
+                for (let svg of entry.target.children){
+                    svg.classList.remove('is-shown')
+                }
+            } else {
+                entry.target.classList.remove('is-shown')
+            }
         }
     }
 })
@@ -331,9 +345,10 @@ function observeAll() {
         observer.observe(headerText)
     }
     
-    for (let skillIcon of document.getElementById('skills-icon-div').children){
-        observer.observe(skillIcon)
-    }
+    // for (let skillIcon of document.getElementById('skills-icon-div').children){
+    //     observer.observe(skillIcon)
+    // }
+    observer.observe(document.getElementById('skills-icon-div'))
     
     observer.observe(document.getElementById('header-buttons-div'))
     
