@@ -434,6 +434,24 @@ footer #phone-div {
     header {
         flex-direction: column;
     }
+
+    header #header-stuff-div #header-titles-div h2 {
+        margin-left: 0;
+    }
+
+    header #header-stuff-div #skills-icon-div {
+        padding: 10px;
+    }
+
+    header #header-stuff-div #skills-icon-div svg{
+        max-height: 34px;
+        flex-shrink: 0;
+    }
+
+    header #header-stuff-div #header-buttons-div {
+        padding: 10px;
+    }
+
     .project-box {
         flex-direction: column;
         width: 90vw;
