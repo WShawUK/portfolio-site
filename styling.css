@@ -102,10 +102,10 @@ header #header-stuff-div #header-buttons-div  button{
     max-width: 220px;
     aspect-ratio: 3.5;
     margin: auto 5%;
+    background-color: var(--color-background-light);
 
     transition: scale 0.05s, transform 0.5s, translate 1s, box-shadow 0.5s, opacity 1s, filter 0.5s;
 
-    background-color: var(--color-background-light);
     border: 1px solid var(--color-misc-1);
     color: var(--color-misc-1);
     font-size: calc(5px + 2vw);
@@ -117,8 +117,9 @@ header #header-stuff-div #header-buttons-div  button{
 #about-me-div {
     margin: 30px auto 30px 3%;
     width: 70%;
-    padding: 5px;
+    padding: 10px;
     border: 1px solid var(--color-misc-1);
+    background-color: var(--color-background-light);
     display: grid;
     grid-template-columns: auto auto;
     grid-template-rows: auto auto;
@@ -180,7 +181,7 @@ header #header-stuff-div #header-buttons-div  button{
 .project-box .project-box-left-stuff p {
     color: var(--color-misc-1);
     font-size: 20px;
-    padding: 5px;
+    padding: 10px;
     height: min-content;
 }
 
@@ -196,7 +197,6 @@ header #header-stuff-div #header-buttons-div  button{
     aspect-ratio: 3.5;
     margin: 10px 5%;
 
-    background-color: var(--color-background-light);
     border: 1px solid var(--color-misc-1);
     color: var(--color-misc-1);
     font-size: calc(10px + 1vw);
@@ -343,6 +343,8 @@ button {
     position: relative;
     transition: scale 0.05s, transform 0.5s, box-shadow 0.5s;
     cursor: pointer;
+    background-color: var(--color-background-dark);
+    
 }
 
 button:hover {
