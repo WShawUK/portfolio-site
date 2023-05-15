@@ -312,8 +312,8 @@ for (let button of allButtons){
             window.open(e.target.dataset.destination, '_blank')
         }
         else {
-            const heightOfHeader = document.querySelector('header').offsetHeight
-            window.scrollTo({top: heightOfHeader, behavior: 'smooth'});
+            const heightBeforeProjects = document.querySelector('header').offsetHeight + document.getElementById('about-me-div').offsetHeight + 40
+            window.scrollTo({top: heightBeforeProjects, behavior: 'smooth'});
         }
 
     })
@@ -356,8 +356,10 @@ function observeAll() {
     observer.observe(document.getElementById('skills-icon-div'))
     
     observer.observe(document.getElementById('header-buttons-div'))
+
     
     setTimeout(() => {
+        observer.observe(document.getElementById('about-me-div'))
         for (let project of document.querySelectorAll('.project-box')){
             observer.observe(project)
         }
