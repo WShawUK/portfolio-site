@@ -113,11 +113,56 @@ header #header-stuff-div #header-buttons-div  button{
 }
 /* HEADER */
 
+/* ABOUT ME */
+#about-me-div {
+    margin: 30px auto 30px 3%;
+    width: 70%;
+    padding: 5px;
+    border: 1px solid var(--color-misc-1);
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+}
+
+#about-me-div h4{
+    color: var(--color-misc-2);
+    font-size: 40px;
+    text-align: center;
+    height: min-content;
+
+    grid-row: 1/2;
+    grid-column: 1/2;
+}
+
+#about-me-div p{
+    color: var(--color-misc-1);
+    font-size: 20px;
+    text-align: left;
+    height: min-content;
+
+    grid-row: 2/3;
+    grid-column: 1/2;
+}
+
+#about-me-div img{
+    width: calc(100px + 15vw);
+    aspect-ratio: 1;
+    border-radius: 50%;
+
+    grid-template-columns: 2/3;
+    grid-row: 1/3;
+
+    margin: auto 5px auto auto;
+}
+/* ABOUT ME */
+
+
+
 
 /* PROJECT BOX */
 .project-box {
     width: calc(200px + 50vw);
-    margin: 30px auto auto 3%;
+    margin: 30px auto 30px 3%;
     background-color: var(--color-background-light);
     border: 1px solid var(--color-misc-1);
 
@@ -251,10 +296,47 @@ header #header-stuff-div #header-buttons-div  button{
     cursor: pointer;
 }
 
+/* CONTACT */
+footer {
+    background-color: var(--color-background-light);
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
 
 
+footer h4 {
+    text-align: center;
+    font-size: 30px;
+    color: var(--color-misc-2);
+    text-decoration: underline;
+    margin-bottom: 5px;
+}
 
+footer svg {
+    width: 40px;
+    height: 40px;
+    color: var(--color-misc-1);
+}
 
+footer a {
+    color: var(--color-misc-1);
+    align-self: center;
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+footer #email-div {
+    align-self: center;
+    display: flex;
+}
+
+footer #phone-div {
+    align-self: center;
+    display: flex;
+}
+
+/* CONTACT */
 
 /* BUTTONS ANIMATION*/
 button {
@@ -300,49 +382,6 @@ button:active{
 }
 /* BUTTONS ANIMATION*/
 
-/* CONTACT */
-footer {
-    background-color: var(--color-background-light);
-    display: flex;
-    flex-direction: column;
-    padding: 5px;
-}
-
-
-footer h4 {
-    text-align: center;
-    font-size: 30px;
-    color: var(--color-misc-2);
-    text-decoration: underline;
-    margin-bottom: 5px;
-}
-
-footer svg {
-    width: 40px;
-    height: 40px;
-    color: var(--color-misc-1);
-    align-self: center;
-}
-
-footer a {
-    color: var(--color-misc-1);
-    align-self: center;
-    font-size: 15px;
-    margin-left: 10px;
-}
-
-footer #email-div {
-    align-self: center;
-    display: flex;
-}
-
-footer #phone-div {
-    align-self: center;
-    display: flex;
-}
-
-/* CONTACT */
-
 /* LOADER */
 #loader-div {
     transition: 0.5s;
@@ -361,6 +400,26 @@ footer #phone-div {
     border: 1px solid var(--color-misc-1);
     align-self: center;
     flex-shrink: 0;
+
+    /* animation-name: helix-border-ebb;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite; */
+}
+
+@keyframes helix-border-ebb {
+    0% {
+        border: 1px solid var(--color-misc-1);
+        box-shadow: 0 0 0px var(--color-misc-1);
+    }
+    50% {
+        border: 1px solid var(--color-misc-2);
+        box-shadow: 0 0 10px var(--color-misc-2);
+    }
+    100% {
+        border: 1px solid var(--color-misc-1);
+        box-shadow: 0 0 0px var(--color-misc-1);
+    }
 }
 
 
@@ -450,6 +509,10 @@ footer #phone-div {
 
     header #header-stuff-div #header-buttons-div {
         padding: 10px;
+    }
+
+    #about-me-div {
+        width: 90%;
     }
 
     .project-box {
