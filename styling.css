@@ -426,7 +426,7 @@ button:active{
 #helix-svg #cursor-animation-image {
     height: 50px;
     width: 50px;
-    border: none;
+    
 
     animation-name: cursor-animation;
     animation-duration: 3s;
@@ -459,6 +459,7 @@ button:active{
     --coords-to-jump-to : ;
     --hsl-to-set : ;
     cursor: default;
+    font-family:'Times New Roman';
 }
 
 .char-was-hovered{
