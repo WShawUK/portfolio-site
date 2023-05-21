@@ -39,8 +39,6 @@ function populateHelix() { // adds the points and strands to the helix and fills
         startingXAngleIncrement = (startingXAngleIncrement + 18) % 360 // 90 degree turn for every full expansion of radius
         strandDataToAdd.startingXAngle = startingXAngleIncrement
 
-        
-
         dataOfAllStrands[i] = strandDataToAdd
 
         let newStrand = document.createElementNS("http://www.w3.org/2000/svg", "g")
@@ -107,13 +105,6 @@ function hoverModifyChars(event) {
     hoveredElement.classList.add('char-was-hovered')
 }
 
-for (let svg of document.getElementById('skills-icon-div').children){
-    svg.addEventListener('touchmove', (e) => {
-        
-        console.log('moved', e.target)
-    })
-}
-
 for (let strand of helixSVG.querySelectorAll('g')){
     for (let char of strand.children){
         char.addEventListener('mouseenter', hoverModifyChars)
@@ -133,8 +124,6 @@ window.addEventListener('scroll', (e) => {  // we get the rect on scroll so we d
             boundingClient = helixSVG.getBoundingClientRect()
             console.log('after 100ms of no scrolling got rect')
         }, 100)
-
-    
 })
 
 let currentCursorPosition = [0, 0]
@@ -172,9 +161,9 @@ helixSVG.addEventListener('touchstart', (e) => {
     currentCursorPosition = [thisTouch.clientX - boundingClient.left, thisTouch.clientY - boundingClient.top]
     previousCursorPosition = [thisTouch.clientX - boundingClient.left, thisTouch.clientY - boundingClient.top]
 })
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////// hover stuff ends here
 
-// TODO we can do optimisation later. currently it adds 0.7 GHz to cpu
+// might be too slow. maybe optimise
 // the optimisations would be: have a dict for every position and detail so that you dont have to caluclate it all.
 
 const universalBaseRadius = 50
@@ -196,12 +185,6 @@ function renderHelixFrame() {
 
         const particularXradius = strandDetails.XRadius
         const particularX = particularXradius * Math.sin(Math.PI * 2 * currentAngleOfThisPoint / 360)
-
-        // const baseDepthValue = (Math.sin(Math.PI * 2 * (currentAngleOfThisPoint - 90) / 360) + 1) / 2 // eg 0.3 // this commented out stuff is the old way.
-        // console.log(particularXradius, baseDepthValue)
-        // const fractionOfTotalRadius = (1 - ((maxRadius - (particularXradius / 1.5)) / 100)) // here the 1.5 is the 'fog' value.
-        // const newRange = fractionOfTotalRadius - (1 - fractionOfTotalRadius) 
-        // const particularDepth = (1 - fractionOfTotalRadius) + (newRange * baseDepthValue)
 
         const baseDepthValue = (Math.sin(Math.PI * 2 * ((currentAngleOfThisPoint - 90) / 360)) + 1) / 2// eg 0.3
         const fractionOfTotalRadius = (particularXradius / maxRadius)
@@ -345,14 +328,12 @@ const observer = new IntersectionObserver((entries) => {
     }
 })
 
+
 function observeAll() {
     for (let headerText of document.getElementById('header-stuff-div').children[0].children){
         observer.observe(headerText)
     }
     
-    // for (let skillIcon of document.getElementById('skills-icon-div').children){
-    //     observer.observe(skillIcon)
-    // }
     observer.observe(document.getElementById('skills-icon-div'))
     
     observer.observe(document.getElementById('header-buttons-div'))
@@ -367,8 +348,6 @@ function observeAll() {
     
     observer.observe(document.getElementById('cv-div'))
 }
-
-
 
 
 // loader
